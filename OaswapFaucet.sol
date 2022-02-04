@@ -19,6 +19,7 @@ contract OaswapFaucet is Ownable {
     function faucetWithdraw(address _requestWallet) external onlyOwner {
         require(address(this).balance >= 0.01 ether, "Faucet is empty.");
         require(sent[_requestWallet] != true, "Already sent.");
+        require(_lastTxn <= block.timestamp - 3 minutes, "Before time limit.");
 
         payable(_requestWallet).transfer(0.01 ether);
         sent[_requestWallet] = true;
