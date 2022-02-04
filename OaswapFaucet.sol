@@ -23,6 +23,7 @@ contract OaswapFaucet is Ownable {
 
         payable(_requestWallet).transfer(0.01 ether);
         sent[_requestWallet] = true;
+        _lastTxn = block.timestamp;
 
         emit Withdrawal(msg.sender);
     }
