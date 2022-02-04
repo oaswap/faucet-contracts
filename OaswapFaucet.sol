@@ -6,6 +6,7 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 
 contract OaswapFaucet is Ownable {
     mapping(address => bool) public sent;
+    uint256 private _lastTxn;
 
     event Withdrawal(address indexed to);
     event Deposit(address indexed from, uint256 amount);
